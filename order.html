@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформлення замовлення</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .back-button {
+            display: inline-block;
+            margin: 1rem auto;
+            padding: 0.6rem 1.2rem;
+            background-color: #8000FF;
+            color: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+            display: block;
+            width: fit-content;
+        }
+        .back-button:hover {
+            background-color: #6a00cc;
+        }
+        .page-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 3rem auto;
+            gap: 30px;
+            align-items: start;
+        }
+        .order-container {
+            flex: 1;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem 2.5rem;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #222;
+        }
+        .order-form {
+            padding: 0;
+            border: none;
+            box-shadow: none;
+        }
+        .order-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .order-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .order-section h3 {
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            color: #222;
+            font-weight: bold;
+            text-align: left;
+        }
+        .order-form label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+        .order-form input, .order-form select {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            background: #f7f7f7;
+        }
+        .order-form button {
+            width: 100%;
+            padding: 0.8rem;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .order-form button:hover {
+            background: #555;
+        }
+        .order-form button[type="submit"] {
+            background-color: #8000FF;
+            color: white;
+        }
+        .order-form button[type="submit"]:hover {
+            background: #6a00cc;
+        }
+        .payment-methods {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 12px;
+            align-items: center;
+        }
+        input[type="radio"] {
+            /* Hide default radio button */
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+            /* Ensure input is positioned correctly in the grid */
+            grid-column: 1;
+        }
+        .payment-radio-label {
+            font-size: 1.08rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            /* Ensure label is positioned correctly in the grid */
+            grid-column: 2;
+        }
+        .custom-radio { /* Outer circle */
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #ccc;
+            margin-right: 10px;
+            position: relative;
+            top: 2.5px;
+            flex-shrink: 0;
+        }
+        .custom-radio::after { /* Inner circle */
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: transparent;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: background-color 0.2s ease;
+        }
+        /* Style when radio button is checked */
+        input[type="radio"]:checked + .payment-radio-label .custom-radio {
+            border-color: #8000FF;
+        }
+        input[type="radio"]:checked + .payment-radio-label .custom-radio::after {
+            background-color: #8000FF;
+        }
+        .prom-balance {
+            grid-column: 2;
+            margin-top: -5px;
+            margin-bottom: 5px;
+            font-size: 0.98rem;
+            color: #2d7a2d;
+            display: none;
+        }
+        .prom-balance.active {
+            display: block;
+        }
+        .cart-summary {
+            width: 300px;
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            height: fit-content;
+            flex-shrink: 0;
+        }
+        .cart-summary h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .cart-item-summary {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .cart-item-summary:last-child {
+            border-bottom: none;
+        }
+        .cart-item-summary p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        .cart-total {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: right;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">Повернутись до магазину</a>
+    <div class="page-wrapper">
+        <div class="order-container">
+            <h2>Оформлення замовлення</h2>
+            <form class="order-form">
+                <div class="order-section">
+                    <h3>Контактні дані</h3>
+                    <label for="order-phone">Телефон</label>
+                    <input type="tel" id="order-phone">
+                    <label for="order-surname">Прізвище</label>
+                    <input type="text" id="order-surname">
+                    <label for="order-firstname">Ім'я</label>
+                    <input type="text" id="order-firstname">
+                    <label for="order-email">Електронна пошта</label>
+                    <input type="email" id="order-email">
+                </div>
+                <div class="order-section">
+                    <h3>Дані доставки</h3>
+                    <label for="order-address">Адреса</label>
+                    <input type="text" id="order-address">
+                    <label for="order-delivery-service">Служба доставки</label>
+                    <input type="text" id="order-delivery-service">
+                    <label for="order-city">Місто</label>
+                    <input type="text" id="order-city">
+                    <label for="order-branch">Відділення</label>
+                    <input type="text" id="order-branch">
+                </div>
+                <div class="order-section">
+                    <h3>Оплата</h3>
+                    <div class="payment-methods">
+                        <input type="radio" name="payment" value="prom" id="pay-prom" checked>
+                        <label for="pay-prom" class="payment-radio-label"><span class="custom-radio"></span>Prom Оплата (з балансу)</label>
+                        <div class="prom-balance" id="orderPromBalance">Баланс: 10 000 грн</div>
+                        
+                        <input type="radio" name="payment" value="card" id="pay-card">
+                        <label for="pay-card" class="payment-radio-label"><span class="custom-radio"></span>Оплата картою</label>
+                        
+                        <input type="radio" name="payment" value="cod" id="pay-cod">
+                        <label for="pay-cod" class="payment-radio-label"><span class="custom-radio"></span>Післясплата</label>
+                    </div>
+                </div>
+                <button type="submit">Підтвердити замовлення</button>
+            </form>
+        </div>
+        <div class="cart-summary">
+            <h3>Ваше замовлення</h3>
+            <div id="orderCartItems"></div>
+            <div class="cart-total" id="orderCartTotal"></div>
+        </div>
+    </div>
+    <script>
+    // Підтягуємо дані з localStorage
+    window.addEventListener('DOMContentLoaded', function() {
+        const map = [
+            ['order-phone', 'cabinet_phone'],
+            ['order-surname', 'cabinet_surname'],
+            ['order-firstname', 'cabinet_firstname'],
+            ['order-email', 'cabinet_email'],
+            ['order-address', 'cabinet_address'],
+            ['order-delivery-service', 'cabinet_delivery-service'],
+            ['order-city', 'cabinet_city'],
+            ['order-branch', 'cabinet_branch']
+        ];
+        map.forEach(([id, key]) => {
+            const el = document.getElementById(id);
+            if (el && localStorage.getItem(key)) {
+                el.value = localStorage.getItem(key);
+            }
+        });
+        // Показати баланс
+        const promBalance = localStorage.getItem('user_balance') || 0;
+        const promBalanceDiv = document.getElementById('orderPromBalance');
+        promBalanceDiv.textContent = 'Баланс: ' + Number(promBalance).toLocaleString('uk-UA') + ' грн';
+        // Показувати баланс тільки якщо вибрано Prom Оплата
+        function updateBalanceVisibility() {
+            const promRadio = document.getElementById('pay-prom');
+            if (promRadio.checked) {
+                promBalanceDiv.classList.add('active');
+            } else {
+                promBalanceDiv.classList.remove('active');
+            }
+        }
+        document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', updateBalanceVisibility);
+        });
+        updateBalanceVisibility();
+
+        // Показати вміст кошика
+        const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+        const orderCartItemsDiv = document.getElementById('orderCartItems');
+        const orderCartTotalDiv = document.getElementById('orderCartTotal');
+        let totalSum = 0;
+
+        if (cartItems.length === 0) {
+            orderCartItemsDiv.innerHTML = '<p>Кошик порожній.</p>';
+            orderCartTotalDiv.textContent = 'Загальна сума: 0 грн';
+        } else {
+            cartItems.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item-summary');
+                const itemTotal = item.price * item.quantity;
+                totalSum += itemTotal;
+                itemElement.innerHTML = `
+                    <div class="item-info">
+                        <p>${item.name} x ${item.quantity}</p>
+                        <p>${itemTotal.toLocaleString('uk-UA')} грн</p>
+                    </div>
+                    <button class="remove-item" data-index="${index}">×</button>
+                `;
+                orderCartItemsDiv.appendChild(itemElement);
+            });
+            orderCartTotalDiv.textContent = 'Загальна сума: ' + totalSum.toLocaleString('uk-UA') + ' грн';
+        }
+
+        // Function to render cart summary
+        function renderCartSummary() {
+            orderCartItemsDiv.innerHTML = '';
+            totalSum = 0; // Recalculate total sum
+
+            if (cartItems.length === 0) {
+                orderCartItemsDiv.innerHTML = '<p>Кошик порожній.</p>';
+                orderCartTotalDiv.textContent = 'Загальна сума: 0 грн';
+            } else {
+                cartItems.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    totalSum += itemTotal;
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('cart-item-summary');
+                     itemElement.innerHTML = `
+                        <div class="item-info">
+                            <p>${item.name} x ${item.quantity}</p>
+                            <p>${itemTotal.toLocaleString('uk-UA')} грн</p>
+                        </div>
+                        <button class="remove-item" data-index="${index}">×</button>
+                    `;
+                    orderCartItemsDiv.appendChild(itemElement);
+                });
+                orderCartTotalDiv.textContent = 'Загальна сума: ' + totalSum.toLocaleString('uk-UA') + ' грн';
+            }
+             localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Save updated cart to localStorage
+        }
+
+        // Initial render of cart summary
+        renderCartSummary();
+
+        // Handle item removal from summary
+        orderCartItemsDiv.addEventListener('click', function(event) {
+            if (event.target.classList.contains('remove-item')) {
+                const index = parseInt(event.target.dataset.index);
+                if (!isNaN(index) && index >= 0 && index < cartItems.length) {
+                    cartItems.splice(index, 1);
+                    renderCartSummary(); // Re-render summary after removal
+                }
+            }
+        });
+
+        // Handle form submission
+        const orderForm = document.querySelector('.order-form');
+        orderForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const selectedPaymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+            const orderTotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            if (orderTotal === 0) {
+                alert('Кошик порожній!');
+                return;
+            }
+
+            // Create new order object
+            const newOrder = {
+                id: Date.now(),
+                items: [...cartItems],
+                total: orderTotal,
+                status: 'pending', // Default status, updated below
+                date: new Date().toISOString(),
+                paymentMethod: selectedPaymentMethod
+            };
+
+            let paymentSuccessful = false;
+
+            // Handle payment method specifics
+            if (selectedPaymentMethod === 'prom') {
+                const currentBalance = parseFloat(localStorage.getItem('user_balance') || '0');
+
+                if (currentBalance >= orderTotal) {
+                    // Move funds from balance to frozen funds
+                    const newBalance = currentBalance - orderTotal;
+                    localStorage.setItem('user_balance', newBalance);
+
+                    // Update frozen funds
+                    const currentFrozen = parseFloat(localStorage.getItem('frozenFunds') || '0');
+                    const newFrozen = currentFrozen + orderTotal;
+                    localStorage.setItem('frozenFunds', newFrozen.toString());
+                    
+                    newOrder.status = 'accepted'; // Update status for Prom successful payment
+                    alert('Замовлення успішно оформлено! Кошти заморожено.');
+                    paymentSuccessful = true;
+
+                } else {
+                    // Insufficient balance
+                    alert('Недостатньо коштів на балансі Prom Оплата!');
+                    // paymentSuccessful remains false
+                }
+            } else if (selectedPaymentMethod === 'card') {
+                 alert('Замовлення оформлено (метод оплати: оплата картою)!');
+                 newOrder.status = 'accepted'; // Static status as requested
+                 paymentSuccessful = true;
+            } else if (selectedPaymentMethod === 'cod') {
+                 alert('Замовлення оформлено (метод оплати: післясплата)!');
+                 newOrder.status = 'accepted'; // Static status as requested
+                 paymentSuccessful = true;
+            }
+
+            // Only save the order and clear cart if payment/order placement was successful
+            if (paymentSuccessful) {
+                // Save the order
+                const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+                orders.push(newOrder);
+                localStorage.setItem('orders', JSON.stringify(orders));
+
+                // Clear the cart
+                localStorage.setItem('cartItems', JSON.stringify([]));
+
+                // Redirect to shop page
+                window.location.href = 'index.html';
+            }
+        });
+    });
+    </script>
+</body>
+</html> 

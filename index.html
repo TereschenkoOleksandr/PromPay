@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prom - Online Clothing Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Prom</div>
+        <div class="search-container wide-search">
+            <input type="text" placeholder="Пошук одягу...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="balance-block">
+            <span id="balanceLabel">Баланс: 10 000 грн</span>
+            <span id="frozenFundsLabel" class="frozen-funds">Заморожені кошти: 0 грн</span>
+        </div>
+        <div class="header-icons">
+            <a href="cabinet.html" class="icon"><i class="fas fa-user"></i><span class="icon-label">Кабінет</span></a>
+            <a href="#" class="icon favorites-icon"><i class="fas fa-heart"></i><span class="favorites-count">0</span><span class="icon-label">Обрані</span></a>
+            <a href="#" class="icon cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span><span class="icon-label">Кошик</span></a>
+            <a href="#" class="icon orders-icon"><i class="fas fa-history"></i><span class="icon-label">Замовлення</span></a>
+        </div>
+    </header>
+
+    <div class="breadcrumbs">
+        <a href="#">Головна</a> &gt; 
+        <a href="#">Одяг</a> &gt; 
+        <span>Повсякденний одяг</span>
+    </div>
+
+    <main>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="images/Item1.webp" alt="Кофта Adidas чорна">
+                <div class="product-info">
+                    <h3>Кофта Adidas чорна</h3>
+                    <p class="price">1 499 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Кофта Adidas чорна" data-price="1499">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="1499" data-name="Кофта Adidas чорна">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="images/Item2.webp" alt="Футболка">
+                <div class="product-info">
+                    <h3>Футболка Chrome Hearts Logo</h3>
+                    <p class="price">399 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Футболка Chrome Hearts Logo" data-price="399">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="399" data-name="Футболка Chrome Hearts Logo">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="images/Item3.webp" alt="Джинсова куртка">
+                <div class="product-info">
+                    <h3>Джинсова вишита куртка ESQ Пустеля молочна</h3>
+                    <p class="price">2 199 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Джинсова вишита куртка ESQ Пустеля молочна" data-price="2199">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="2199" data-name="Джинсова вишита куртка ESQ Пустеля молочна'">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="images/Item4.webp" alt="Джинси">
+                <div class="product-info">
+                    <h3>Чоловічі джинси звужені стильні slim fit</h3>
+                    <p class="price">1 299 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Чоловічі джинси звужені стильні slim fit" data-price="1299">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="1299" data-name="Чоловічі джинси звужені стильні slim fit">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 5 -->
+            <div class="product-card">
+                <img src="Images/Item5.webp" alt="Блуза з квітами">
+                <div class="product-info">
+                    <h3>Блуза біла, топ-корсет з довгими рукавами</h3>
+                    <p class="price">899 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Блуза біла, топ-корсет з довгими рукавами" data-price="899">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="899" data-name="Блуза біла, топ-корсет з довгими рукавами">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 6 -->
+            <div class="product-card">
+                <img src="Images/Item6.webp" alt="Шкіряні чоботи">
+                <div class="product-info">
+                    <h3>Чоботи чоловічі (ЕВА) з утеплювачем - Active</h3>
+                    <p class="price">2 799 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Чоботи чоловічі (ЕВА) з утеплювачем - Active" data-price="2799">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="2799" data-name="Чоботи чоловічі (ЕВА) з утеплювачем - Active">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 7 -->
+            <div class="product-card">
+                <img src="Images/Item7.webp" alt="В'язаний светр">
+                <div class="product-info">
+                    <h3>В'язаний жіночій укорочений светр </h3>
+                    <p class="price">1 099 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="В'язаний жіночій укорочений " data-price="1099">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="1099" data-name="В'язаний жіночій укорочений светр">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 8 -->
+            <div class="product-card">
+                <img src="Images/Item8.webp" alt="Плісирована спідниця">
+                <div class="product-info">
+                    <h3>Спідниця плісирована чорна</h3>
+                    <p class="price">799 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Спідниця плісирована чорна" data-price="799">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="799" data-name="Спідниця плісирована чорна">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 9 -->
+            <div class="product-card">
+                <img src="images/Item9.webp" alt="Оверсайз худі">
+                <div class="product-info">
+                    <h3>Оверсайз худі з капюшоном та кишенею </h3>
+                    <p class="price">1 299 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Оверсайз худі з капюшоном та кишенею " data-price="1299">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="1299" data-name="Оверсайз худі з капюшоном та кишенею ">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 10 -->
+            <div class="product-card">
+                <img src="Images/Item10.webp" alt="Шовковий шарф">
+                <div class="product-info">
+                    <h3>Шовковий шарф хустка палантин</h3>
+                    <p class="price">499 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Шовковий шарф хустка палантин" data-price="499">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="499" data-name="Шовковий шарф хустка палантин">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 11 -->
+            <div class="product-card">
+                <img src="Images/Item11.webp" alt="Пальто чоловіче сірого кольору">
+                <div class="product-info">
+                    <h3>Пальто чоловіче сірого кольору</h3>
+                    <p class="price">2 999 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Пальто чоловіче сірого кольору" data-price="2999">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="2999" data-name="Пальто чоловіче сірого кольору">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 12 -->
+            <div class="product-card">
+                <img src="Images/Item12.webp" alt="Лляна сорочка">
+                <div class="product-info">
+                    <h3>Чоловіча лляна сорочка XXL</h3>
+                    <p class="price">799 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Чоловіча лляна сорочка XXL" data-price="799">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="799" data-name="Чоловіча лляна сорочка XXL">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 13 -->
+            <div class="product-card">
+                <img src="Images/Item13.webp" alt="Класична сорочка">
+                <div class="product-info">
+                    <h3>Жіноча класична сорочка для офісу</h3>
+                    <p class="price">899 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Жіноча класична сорочка для офісу" data-price="899">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="899" data-name="Жіноча класична сорочка для офісу">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 14 -->
+            <div class="product-card">
+                <img src="Images/Item14.webp" alt="Піджак">
+                <div class="product-info">
+                    <h3>Жіночий базовий піджак на підкладці</h3>
+                    <p class="price">1 799 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Жіночий базовий піджак на підкладці" data-price="1799">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="1799" data-name="Жіночий базовий піджак на підкладці">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 15 -->
+            <div class="product-card">
+                <img src="Images/Item15.webp" alt="Кардиган">
+                <div class="product-info">
+                    <h3>Кардиган жіночий MIX RAY 6240</h3>
+                    <p class="price">1 099 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Кардиган жіночий MIX RAY 6240" data-price="1099">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="1099" data-name="Кардиган жіночий MIX RAY 6240">Додати в кошик</button>
+                </div>
+            </div>
+            <!-- Product 16 -->
+            <div class="product-card">
+                <img src="Images/Item16.webp" alt="Пуховик">
+                <div class="product-info">
+                    <h3>Жіночий оверсайз пуховик з капюшоном</h3>
+                    <p class="price">2 499 грн</p>
+                    <div class="product-actions-row">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="99" class="quantity-input">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <button class="favorite-btn" data-name="Жіночий оверсайз пуховик з капюшоном" data-price="2499">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                    </div>
+                    <button class="add-to-cart-btn" data-price="2499" data-name="Жіночий оверсайз пуховик з капюшоном">Додати в кошик</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Кошик</h2>
+                <button class="close-cart">&times;</button>
+            </div>
+            <div class="cart-items">
+                <!-- Cart items will be added here dynamically -->
+            </div>
+            <div class="cart-total" id="cartTotalRow">
+                <p>Загальна сума: <span id="totalAmount">0 грн</span></p>
+            </div>
+            <button class="checkout-btn">Оформити замовлення</button>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div class="favorites-modal" id="favoritesModal">
+        <div class="favorites-content">
+            <div class="favorites-header">
+                <h2>Обрані товари</h2>
+                <button class="close-favorites">&times;</button>
+            </div>
+            <div class="favorites-items">
+                <!-- Favorite items will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders Modal -->
+    <div class="orders-modal" id="ordersModal">
+        <div class="orders-content">
+            <div class="orders-header">
+                <h2>Мої замовлення</h2>
+                <button class="close-orders">&times;</button>
+            </div>
+            <div class="orders-items">
+                <!-- Order history will be added here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
